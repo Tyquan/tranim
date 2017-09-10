@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #container {
+            width: 1200px;
+            height: 400px;
+            position: relative;
+            background: blue;
+        }
+        
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Testing Animation</h1>
+    
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+    
+    <button id="dButton">slideDown</button>
+    <button id="uButton">slideUp</button>
+
+    <script src="../tranim/tranim.js"></script>
+
+    <script>
+        window.onload = () => {
+            var app = new Tranim();
+            
+            var dButton = app.getElement('#dButton');
+            var uButton = app.getElement('#uButton');
+            var animate = app.getElement('#animate');
+
+            
+            console.log(app);
+            
+            dButton.addEventListener('click', () => {
+                app.slideVert('down', animate, 0, 350, 5, () => {
+                    alert('Callback Works');
+                });
+            });
+            
+            uButton.addEventListener('click', () => {
+                app.slideVert('up', animate, 0, 350, 5);
+            });
+        };
+    </script>
+
+</body>
+
+</html>

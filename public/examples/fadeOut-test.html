@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #container {
+            width: 1200px;
+            height: 400px;
+            position: relative;
+            background: blue;
+        }
+        
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Testing Animation</h1>
+    
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+    
+    <button id="fade">Fade Out</button>
+
+    <script src="../tranim/tranim.js"></script>
+
+    <script>
+        window.onload = () => {
+            var app = new Tranim();
+            
+            var fade = app.getElement('#fade');
+            var animate = app.getElement('#animate');
+            
+            fade.addEventListener('click', () => {
+                app.fadeOut(animate, {
+                    duration: 2000,
+                    complete: () => {
+                        console.log('Complete');
+                    }
+                }, false);
+            });
+            
+        };
+    </script>
+
+</body>
+
+</html>
